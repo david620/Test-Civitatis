@@ -13,11 +13,12 @@ class FrontController extends Controller
 	    return view('welcome', compact('events'));
     }
 
+	function ajax_events(Request $request){
+		$date = json_decode($request->datess);
+		$people = json_decode($request->people);
 
-	function ajax_dates(Request $request){
-		$event_id = json_decode($request->event);
-		$event = Event::findOrFail($event_id);
-        return view('dates', compact('event'));
+		$events = Event::whereRaw('? between init_avaibility_date and end_avaibility_date', [$date])->orderBy('trending', 'ASC')->get();
+		if($events) return view('events', compact('events', 'people')); 
 	}
 
 }

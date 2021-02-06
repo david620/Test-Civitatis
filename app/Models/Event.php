@@ -14,4 +14,9 @@ class Event extends Model
         return $this->hasMany('App\Models\Booking');
     }
 
+    public function totalPrice($price, $quantity)
+    {
+        return $price * $quantity;
+    }
+
 }
