@@ -53,7 +53,7 @@ _En el directiorio: \app\Models se ubicaron los modelos para controlar através 
 
 _Las herramientas que se utilizaron_
 
-* [Laravel Framework 7.3](https://laravel.com/docs/7.*) - El framework PHP utilizado
+* [Laravel Framework 7.3](https://laravel.com/docs/7.x) - El framework PHP utilizado
 * [Entorno LAMP] - Entorno donde se programó el desarrollo de la prueba.
 
 
