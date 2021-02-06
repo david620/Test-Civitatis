@@ -94,11 +94,9 @@
                     data:{people, datess, _token: '{{ csrf_token() }}'},
                     statusCode: {
                         200: function(data) {
-                            console.log(data);
                             list.style.display = "block";
                             message.style.display = "none";
                             if(data === null){
-                                console.log(data);
                                 $field.html('');
                             }else{
                                 $field.html(data);
@@ -107,8 +105,36 @@
                     }
                 });
         });
-    </script>
 
+
+        $(document).on('click', '#getMessage', function(e){
+            e.preventDefault();
+            var people = $('#people').val();  
+            var dates = $('#dates').val();
+            var datess = JSON.stringify(dates);
+            var url = $(this).data('url');
+            $('.message-modal').html(''); 
+            $('#modal-loader').show();     
+            $.ajax({
+                url: url,
+                data:{people, datess},
+                type: 'GET',
+                dataType: 'html'
+            })
+            .done(function(data){
+                $('.message-modal').html('');    
+                $('.message-modal').html(data); // load response 
+                $('#modal-loader').hide();        // hide ajax loader   
+            })
+            .fail(function(){
+                $('#dynamic-content').html('<i class="glyphicon glyphicon-info-sign"></i> Algo ha ocurrido, intente de nuevo...');
+                $('#modal-loader').hide();
+            });
+        });
+
+
+    </script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     @if(Session::get('success') || Session::get('error'))
         <script>

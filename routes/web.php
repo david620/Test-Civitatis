@@ -17,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 	Route::get('/', array('as' => 'home', 'uses' => 'FrontController@index'));
 // Landing Page de Reservas//
 
-// Ajax Fechas Actividades//	
-	Route::post('/ajax-events', array('as' => 'ajax_events', 'uses' => 'FrontController@ajax_events'));
-// Ajax Fechas Actividades//	
+// Ajax Actividades//	
+	Route::post('/ajax-events-list', array('as' => 'ajax_events', 'uses' => 'FrontController@ajax_events'));
+	Route::get('/ajax-event/{id}', array('as' => 'ajax_event', 'uses' => 'FrontController@ajax_event'));
+
+// Ajax Actividades//	
 
 // Guardar Reserva de Actividades//
 	Route::post('/booking-store', array('as' => 'booking_store', 'uses' => 'BookingController@store'));

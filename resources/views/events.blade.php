@@ -10,7 +10,9 @@
   	@if(sizeof($events) > 0 )
 		@foreach($events as $key => $event)
 	    <tr>
-	      <td>{{$event->title}}</td>
+	      <td>
+			<a data-toggle="modal" id="getMessage" data-target="#messageBoard" data-url="{{ route('ajax_event',$event->id)}}" href="#."> {{$event->title}} </a>
+	      </td>
 	      <td>{{$event->totalPrice($event->price, $people) }} €</td>
 	      <td>
 			<form name="buyForm" id="buyForm" method="POST" action="{{route('booking_store')}}">

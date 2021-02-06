@@ -19,3 +19,12 @@
           </div>
         </div>
     </div>
+
+<div class="modal fade" id="messageBoard" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content message-modal">
+            
+        </div>
+    </div>
+</div>
