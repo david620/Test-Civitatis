@@ -32,13 +32,20 @@ php artisan serve
 
 _Con esto se podrá utilizar el entorno en el servidor local: http://localhost:8000/_
 
+## Estructura ⚙️
+
+## Migraciones
+
+_En el directiorio: \database\migrations se ubicaron las migraciones para crear las tablas correspondientes de la base de datos, aprovechando las bondades del ORM de Laravel_
+
+* Creada Migración: 2021_02_06_081601_create_events_table.php, la cual maneja la tabla events referente a las actividades.
 
 
 ## Construido con 🛠️
 
 _Las herramientas que se utilizaron_
 
-* [Laravel Framework 5.8](https://laravel.com/docs/5.8) - El framework web usado
+* [Laravel Framework 7.3](https://laravel.com/docs/7.*) - El framework PHP utilizado
 * [Entorno LAMP] - Entorno donde se programó el desarrollo de la prueba.
 
 
