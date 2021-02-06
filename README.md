@@ -13,7 +13,7 @@ _Que se necesita para instalar el software:_
 
 * Entorno LAMP (Linux, Apache, MySQL, PHP) o WAMP (Windows, Apache, MySQL, PHP) - No es necesario el gestor de Base de Datos.
 * [Composer](https://getcomposer.org/) - para el manejo de Laravel
-* [Git] - para el control de versiones.
+* [Git](https://github.com/david620/Test-Civitatis) - para el control de versiones.
 
 
 ### Instalación 🔧
@@ -24,11 +24,19 @@ _Luego de clonado el repositorio se usan los siguientes comandos:_
 composer install
 ```
 
-_Luego que se instalen las dependencias de Laravel se utiliza:_
+_Luego que se instalen las dependencias de Laravel se requiere poblar la base de datos con:_
+
+```
+php artisan migrate:refresh --seed
+```
+
+_Luego que se instalen las dependencias de Laravel y se haya poblado la base de datos, entonces:_
 
 ```
 php artisan serve
 ```
+_Antes de empezar a ejecutar el proyecto se debe configurar la base de datos local en el archivo .env_
+
 
 _Con esto se podrá utilizar el entorno en el servidor local: http://localhost:8000/_
 

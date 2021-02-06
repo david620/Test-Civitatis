@@ -14,11 +14,13 @@ class Event extends Model
         return $this->hasMany('App\Models\Booking');
     }
 
+    //Calcula el precio total de una actividad
     public function totalPrice($price, $quantity)
     {
         return $price * $quantity;
     }
 
+    //Muestra las actividades relacionadas filtrando por la fecha
     public function relatedEvents($date)
     {        
         $events_ids = explode(",", $this->related_events);

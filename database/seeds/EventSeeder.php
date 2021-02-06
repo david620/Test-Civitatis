@@ -13,8 +13,7 @@ class EventSeeder extends Seeder
      */
     public function run()
     {
-        Event::unguard();
-
+        //Se crean semillas para poblar la base de datos con información de ejemplo
         Event::create([
             'title' => 'Tour Camp Nou',
             'description' => 'Tour completo al Camp Nou, con acceso a la cancha y vestidores.',
