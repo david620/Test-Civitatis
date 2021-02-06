@@ -16,6 +16,9 @@
 			<form name="buyForm" id="buyForm" method="POST" action="{{route('booking_store')}}">
 			{{ csrf_field() }}
 				<input id="eventId" name="eventId" type="hidden" value="{{$event->id}}">
+				<input id="totalPrice" name="totalPrice" type="hidden" value="{{$event->totalPrice($event->price, $people) }}">
+				<input id="people" name="people" type="hidden" value="{{$people}}">
+				<input id="eventDate" name="eventDate" type="hidden" value="{{$date}}">
 	      		<button class="submit-btn">Comprar</button>
 	      	</form>	
 	      </td>

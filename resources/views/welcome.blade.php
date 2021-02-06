@@ -16,6 +16,8 @@
 
         <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
 
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+
     </head>
     <body>
 
@@ -76,9 +78,8 @@
             </div>
         </div>
     </div>
-
+    @include('modals')
     <script type="text/javascript">
-
         $('#searchForm').submit(function(e){
             e.preventDefault();
             var people = $('#people').val();  
@@ -87,7 +88,6 @@
             var list = document.getElementById("eventsList");
             var message = document.getElementById("welcomeMsg");
             let $field = $('.eventsList');
-
                 $.ajax({
                     type: 'post',
                     url:'{{route('ajax_events')}}?' + $('#searchForm').serialize(),
@@ -106,13 +106,16 @@
                         }
                     }
                 });
-
-
         });
-        
-
-
-
     </script>
-    </body>
+
+
+    @if(Session::get('success') || Session::get('error'))
+        <script>
+          $('#Modal').modal('show');
+        </script>
+    @endif
+
+
+</body>
 </html>
