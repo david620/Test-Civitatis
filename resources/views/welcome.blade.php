@@ -14,6 +14,8 @@
         <!-- Custom stlylesheet -->
         <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
+        <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+
     </head>
     <body>
 
@@ -35,27 +37,29 @@
                             <form>
                                 <div class="form-group">
                                     <span class="form-label">Actividades</span>
-                                    <select class="form-control" type="text" placeholder="Seleccione una Actividad">
+                                    <select class="form-control" type="text" placeholder="Seleccione una Actividad" onchange="changeQuestions(this.value)">
                                         <option>Seleccione una Actividad</option>
                                         @foreach($events as $key => $event)
-                                            <option value="{{$key}}">{{$event->title}}</option>
+                                            <option value="{{$event->id}}">{{$event->title}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-7 dates">
                                         <div class="form-group">
                                             <span class="form-label">Fechas</span>
-                                            <input class="form-control" type="date" required>
+                                            <input class="form-control" type="date" disabled>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-5">
                                         <div class="form-group">
                                             <span class="form-label">Personas</span>
-                                            <select class="form-control">
+                                            <select class="form-control" disabled>
                                                 <option>Seleccionar</option>
-                                                <option>1</option>
-                                                <option>2</option>
+                                                <!--Se coloca un limite de 25 personas por evento para poblar el select-->
+                                                @for($i=1; $i <=25; $i++)
+                                                    <option value="{{$i}}">{{$i}}</option>
+                                                @endfor
                                             </select>
                                             <span class="select-arrow"></span>
                                         </div>
@@ -74,8 +78,25 @@
         </div>
     </div>
 
-
-
-
+    <script type="text/javascript">
+        function changeQuestions(el){
+            var element = el;
+            let $field = $('.dates');
+                $.ajax({
+                    url:'{{route('ajax_dates')}}',
+                    dataType: 'json',
+                    data:{event:element},
+                    statusCode: {
+                        200: function(data) {
+                            if(data === null){
+                                $field.html('');
+                            }else{
+                                $field.html(data.responseText);
+                            }
+                        }
+                    }
+                });
+            }            
+        </script>
     </body>
 </html>

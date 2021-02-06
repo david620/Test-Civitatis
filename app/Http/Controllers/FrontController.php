@@ -13,4 +13,11 @@ class FrontController extends Controller
 	    return view('welcome', compact('events'));
     }
 
+
+	function ajax_dates(Request $request){
+		$event_id = json_decode($request->event);
+		$event = Event::findOrFail($event_id);
+        return view('dates', compact('event'));
+	}
+
 }
