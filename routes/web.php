@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Landing Page de Reservas//
+	Route::get('/', array('as' => 'home', 'uses' => 'FrontController@index'));
+// Landing Page de Reservas//
