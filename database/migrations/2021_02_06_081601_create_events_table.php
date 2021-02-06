@@ -14,7 +14,7 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id()->comment('Identificador numérico'); // Identificador numérico
+            $table->increments('id')->comment('Identificador numérico'); // Identificador numérico
             $table->string('title', 64)->comment('Título (hasta 64 caracteres)'); //  Título (hasta 64 caracteres)
             $table->string('description', 1000)->comment('Descripción (1000 caracteres)'); //  Descripción (1000 caracteres)
 
@@ -24,7 +24,7 @@ class CreateEventsTable extends Migration
             $table->double('price')->comment('Precio por persona'); //  Precio por persona
             $table->integer('trending')->comment('Indicador de popularidad (numérico, cuanto más alto, más popular)'); //  Indicador de popularidad (numérico, cuanto más alto, más popular)
 
-            $table->timestamps(); //  Fechas creación y actualización
+            $table->timestamps(); //  Fechas creación y actualización del Objeto
         });
     }
 
