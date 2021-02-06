@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
 
             $table->double('price')->comment('Precio por persona'); //  Precio por persona
             $table->integer('trending')->comment('Indicador de popularidad (numérico, cuanto más alto, más popular)'); //  Indicador de popularidad (numérico, cuanto más alto, más popular)
+            $table->string('related_events')->comment('Lista de Eventos Relacionados'); //  Lista de Eventos Relacionados
 
             $table->timestamps(); //  Fechas creación y actualización del Objeto
         });

@@ -16,8 +16,13 @@
                 <span class="form-label">Nº de Personas: </span>                        
                 <p class="form-control">{{$people}}</p>       
                 <span class="form-label">Precio Total a Abonar: </span>                        
-                <p class="form-control">{{$event->totalPrice($event->price, $people) }} €</p>       
-
+                <p class="form-control">{{$event->totalPrice($event->price, $people) }}€</p>       
+                <span class="form-label">Eventos Relacionados: </span>
+                    @foreach($event->relatedEvents($date) as $title)
+                        <li> 
+                            {{$title}}
+                        </li>  
+                    @endforeach
                 <form name="buyFormModal" id="buyFormModal" method="POST" action="{{route('booking_store')}}">
                 {{ csrf_field() }}
                     <input id="eventId" name="eventId" type="hidden" value="{{$event->id}}">
